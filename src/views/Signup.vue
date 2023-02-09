@@ -1,10 +1,11 @@
 
 <script>
 import axios from 'axios';
-
+import { URL } from '../../config/index.js'
 export default {
     name: 'Signup',
     mounted() {
+        localStorage.clear()
         // if (this.token_store.token.access_token) {
         //     this.$router.push({ name: 'home' })
         // }
@@ -35,7 +36,7 @@ export default {
                 let refresh_token = token.refresh_token
 
                 console.log(refresh_token)
-                let res = await axios.post('http://localhost:3000/api/refresh', { refresh_token: refresh_token })
+                let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
 
                 window.localStorage.setItem("token", JSON.stringify(res.data))
                 console.log(res)
@@ -54,7 +55,7 @@ export default {
                     'Content-Type': 'application/json',
                     'authorization': `Bearer ${token.access_token}`
                 }
-                let res = await axios.get(`http://localhost:3000/api/me`, {
+                let res = await axios.get(`${URL}/api/me`, {
                     headers: headers
                 })
                 console.log(res)
@@ -70,7 +71,7 @@ export default {
             try {
                 if (this.name != '' && this.email != '' && this.password != '' && this.confirm_password != '') {
                     console.log(this.name)
-                    res = await axios.post('http://localhost:3000/api/register', {
+                    res = await axios.post(`${URL}/api/register`, {
                         name: this.name,
                         email: this.email,
                         password: this.password,

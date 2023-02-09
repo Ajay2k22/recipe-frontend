@@ -11,8 +11,10 @@ export default {
             this.$router.push({ name: 'mypost' })
         },
         onLoaded() {
+            
             let detail = JSON.parse(localStorage.getItem('detail'));
             this.name = detail.name
+            
         }
     },
     mounted() {
@@ -96,7 +98,7 @@ p {
 }
 
 .hero-rt {
-    padding: 5rem;
+    padding: 6.5rem;
     flex: 1;
     background: var(--pink);
     border-top-left-radius: 20rem;

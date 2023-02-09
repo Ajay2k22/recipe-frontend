@@ -1,7 +1,7 @@
 
 <script>
 import axios from 'axios';
-
+import { URL } from '../../config/index.js'
 export default {
   name: 'Login',
   mounted() {
@@ -10,6 +10,7 @@ export default {
     //   this.$router.push({ name: 'home' })
     // }
     // console.log(token)
+    localStorage.clear()
   },
 
   data() {
@@ -25,7 +26,7 @@ export default {
         let refresh_token = token.refresh_token
 
         console.log(refresh_token)
-        let res = await axios.post('http://localhost:3000/api/refresh', { refresh_token: refresh_token })
+        let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
 
         window.localStorage.setItem("token", JSON.stringify(res.data))
         console.log(res)
@@ -44,7 +45,7 @@ export default {
           'Content-Type': 'application/json',
           'authorization': `Bearer ${token.access_token}`
         }
-        let res = await axios.get(`http://localhost:3000/api/me`, {
+        let res = await axios.get(`${URL}/api/me`, {
           headers: headers
         })
         console.log(res)
@@ -58,7 +59,7 @@ export default {
       let res
       try {
         if (this.email != '' && this.password != '') {
-          res = await axios.post('http://localhost:3000/api/login', {
+          res = await axios.post(`${URL}/api/login`, {
             email: this.email,
             password: this.password
             //email: "Ajay@gmail.com",

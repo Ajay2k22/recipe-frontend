@@ -2,6 +2,7 @@
 import Cards from '../components/Cards.vue'
 import Navbar from '../components/Navbar.vue'
 import axios from 'axios';
+import { URL } from '../../config/index.js'
 import Footer from '../components/Footer.vue'
 export default {
     name: 'Search',
@@ -32,9 +33,15 @@ export default {
         async onSearch() {
             try {
                 console.log('hi')
-                let res = await axios.get(`http://localhost:3000/api/ingredient/${this.search}`)
-                this.items = res.data.data
-                console.log(this.items)
+                let res = await axios.get(`${URL}/api/ingredient/${this.search}`)
+
+                if (res.data.data.length === 0) {
+                    this.items = 0
+                }
+                else {
+                    this.items = res.data.data
+                }
+                console.log(res.data.data.length)
             } catch (e) {
                 console.log('error is here')
                 console.log(e)
@@ -45,7 +52,7 @@ export default {
         },
         async fetch() {
             try {
-                let res = await axios.get('http://localhost:3000/api/ingredients/')
+                let res = await axios.get(`${URL}/api/ingredients/`)
                 this.items = res.data.data
                 console.log(this.items)
             } catch (e) {
@@ -68,17 +75,30 @@ export default {
         <div v-if="this.items.length != 0" class="card">
             <Cards class="wrap" @click="this.newPage" :item="item" v-for="item in this.items" :key="item" />
         </div>
-        <h2 v-if="this.items.length === 0">Result not found</h2>
+        <div v-if="this.items === 0" class="container1">
+            <h2>Result not found</h2>
+        </div>
     </div>
-    <Footer />
+
+    
 </template>
 <style >
 .container {
     padding: 2rem;
+    height: 100%;
+    width: 100%;
+
     display: flex;
     position: relative;
     gap: 1rem;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container1 {
+    height: 13rem;
+    width:100%;
     justify-content: center;
     align-items: center;
 }

@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { URL } from '../../config/index.js'
 export default {
     name: 'Comments',
     data() {
@@ -26,7 +27,7 @@ export default {
         async commentSubmit() {
             console.log(this.comment)
             try {
-                let res = await axios.post('http://localhost:3000/api/comment', {
+                let res = await axios.post(`${URL}/api/comment`, {
                     comment: this.comment,
                     id: this.id,
                     name: this.name
@@ -42,7 +43,7 @@ export default {
         async commentFetch() {
             console.log(this.comment)
             try {
-                let res = await axios.get(`http://localhost:3000/api/comment/${this.id}`)
+                let res = await axios.get(`${URL}/api/comment/${this.id}`)
                 this.data = res.data
                 console.log('fetch')
                 console.log(this.data.data)

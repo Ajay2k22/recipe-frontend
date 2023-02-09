@@ -59,6 +59,8 @@ export default {
 <style scoped>
 .footer {
     width: 100%;
+    position:static;
+    bottom:0;
     height: 12rem;
     box-shadow: var(--box-shadow2);
     display: flex;

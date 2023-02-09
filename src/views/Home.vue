@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar.vue'
 import axios from 'axios'
 import Hero from '../components/Hero.vue'
+import { URL } from '../../config/index.js'
 import Footer from '../components/Footer.vue'
 export default {
   name: 'Home',

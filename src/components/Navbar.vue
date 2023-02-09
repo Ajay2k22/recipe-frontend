@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-
+import {URL} from '../../config/index.js'
 export default {
     name: 'Logout',
 
@@ -24,7 +24,7 @@ export default {
                 let refresh_token = token.refresh_token
 
                 console.log(refresh_token)
-                let res = await axios.post('http://localhost:3000/api/refresh', { refresh_token: refresh_token })
+                let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
 
                 window.localStorage.setItem("token", JSON.stringify(res.data))
                 console.log(res)
@@ -46,7 +46,7 @@ export default {
                     'authorization': `Bearer ${token.access_token}`
                 }
 
-                let res = await axios.post('http://localhost:3000/api/logout', { "refresh_token": refresh_token },
+                let res = await axios.post(`${URL}/api/logout`, { "refresh_token": refresh_token },
                     {
                         headers: headers
                     });

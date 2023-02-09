@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import Comments from '../views/Comments.vue'
+import { URL } from '../../config/index.js'
 import Footer from '../components/Footer.vue'
 import Navbar from '../components/Navbar.vue'
 export default {
@@ -22,7 +23,7 @@ export default {
     },
     methods: {
         async fetchfeed() {
-            const res = await axios.get(`http://localhost:3000/api/ingredients/${this.id}`)
+            const res = await axios.get(`${URL}/api/ingredients/${this.id}`)
             this.item = res.data.data[0]
             console.log(res.data.data[0].name)
             // console.log(this.item.instructions[0].text)

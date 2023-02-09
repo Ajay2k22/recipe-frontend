@@ -2,6 +2,7 @@
 <script>
 import axios from 'axios';
 import FormData from 'form-data'
+import { URL } from '../../config/index.js'
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue';
 export default {
@@ -35,7 +36,7 @@ export default {
                 let refresh_token = token.refresh_token
 
                 console.log(refresh_token)
-                let res = await axios.post('http://localhost:3000/api/refresh', { refresh_token: refresh_token })
+                let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
 
                 window.localStorage.setItem("token", JSON.stringify(res.data))
                 console.log(res)
@@ -77,7 +78,7 @@ export default {
                     console.log('hi bro')
                     console.log('hello123', this.dataUri)
                     formdata.append('image', this.dataUri)
-                    res = await axios.post('http://localhost:3000/api/products',
+                    res = await axios.post(`${URL}/api/products`,
                         formdata,
                         {
                             headers: headers

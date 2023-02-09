@@ -2,21 +2,30 @@
 <script>
 import axios from 'axios';
 import FormData from 'form-data'
+import { URL } from '../../config/index.js'
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue';
 export default {
     name: 'My Post',
+    beforeMount() {
+        this.onreload()
+    },
     mounted() {
 
         let token = localStorage.getItem('token');
         if (!token) {
             this.$router.push({ name: 'signup' })
         }
-        this.onreload()
+
+
+    },
+    beforeUpdate() {
+
     },
     data() {
         return {
-            data: []
+            data: [],
+            url: ''
         }
     },
     components: {
@@ -30,7 +39,7 @@ export default {
                 let refresh_token = token.refresh_token
 
                 console.log(refresh_token)
-                let res = await axios.post('http://localhost:3000/api/refresh', { refresh_token: refresh_token })
+                let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
 
                 window.localStorage.setItem("token", JSON.stringify(res.data))
                 console.log(res)
@@ -43,11 +52,12 @@ export default {
         },
         async onreload() {
             try {
-                let res = await axios.get('http://localhost:3000/api/products')
+                this.url = "http://localhost:3000"
+                let res = await axios.get(`${URL}/api/products`)
                 this.data = res.data
                 console.log(res.data)
 
-                console.log(this.data[0].image.split('http://localhost:3000/')[1])
+                console.log(this.data[0].image.split(`${URL}/`)[1])
             }
             catch (e) {
                 console.log(e)
@@ -62,7 +72,7 @@ export default {
         <div class="container">
             <div class="card" v-for="data in this.data" :key="data">
                 <div class="img">
-                    <img :src="data.image.split('http://localhost:3000/')[1]" alt="">
+                    <img :src="data.image.split(`${this.url}/`)[1]" alt="">
 
                     <span class="tag">{{ data.tag }}</span>
                 </div>
@@ -74,8 +84,9 @@ export default {
             </div>
 
         </div>
+        
     </div>
-    <Footer />
+
 </template>
 
 <style scoped>
