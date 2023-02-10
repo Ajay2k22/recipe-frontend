@@ -135,12 +135,12 @@ export default {
     margin-top: auto;
     box-shadow: var(--box-shadow2);
     padding: 1rem;
-    width: auto;
+    width: 80%;
     border-radius: 2rem;
 }
 
 .img img {
-    width: 35rem;
+    width: 80%;
     box-shadow: var(--box-shadow2);
     border-radius: 2rem;
 }
@@ -164,5 +164,47 @@ export default {
 
 .text {
     margin-top: 1.2rem;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        margin: 0.1rem;
+        padding: 0.2rem;
+        display: flex;
+        min-width: 320px;
+        max-width: 768px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .body1 {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .ingredients2 {
+
+        width: 100%;
+
+    }
+
+    .img img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+
+
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+    .container {
+        width: 425px;
+    }
 }
 </style>

@@ -27,18 +27,21 @@ export default {
                     <span>Online retails</span>
                     <span>Services</span>
                 </div>
+                <div class="line"></div>
                 <div class="col2 col">
                     <label>About</label>
                     <span>Contact</span>
                     <span>Service</span>
                     <span>Team</span>
                 </div>
+                <div class="line"></div>
                 <div class="col3 col">
                     <label>Services</label>
                     <span>Event</span>
                     <span>News</span>
                     <span>Award</span>
                 </div>
+                <div class="line"></div>
                 <div class="col4 col">
                     <label>Help</label>
                     <span>FAQ</span>
@@ -59,8 +62,8 @@ export default {
 <style scoped>
 .footer {
     width: 100%;
-    position:static;
-    bottom:0;
+    position: static;
+    bottom: 0;
     height: 12rem;
     box-shadow: var(--box-shadow2);
     display: flex;
@@ -82,6 +85,12 @@ label {
     font-weight: 500;
 
     color: rgb(255, 255, 255);
+}
+
+.line {
+    display: none;
+    width: 100px;
+    border: 1px solid grey;
 }
 
 .col {
@@ -122,5 +131,35 @@ label {
     align-items: center;
 
     width: 100%;
+}
+
+@media (max-width: 425px) {
+    .line {
+        display: block;
+
+    }
+
+    .header {
+
+        flex-direction: column;
+        padding: 1rem 0;
+        
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    .footer {
+        width: 425px;
+
+        height: auto;
+
+    }
+
+    .col {
+        margin: 0.5rem 0;
+        justify-content: center;
+        align-items: center;
+    }
+
 }
 </style>

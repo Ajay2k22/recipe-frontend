@@ -1,6 +1,7 @@
 <script >
 import Navbar from '../components/Navbar.vue'
 import axios from 'axios'
+import Navbar1 from '../components/Navbar1.vue'
 import Hero from '../components/Hero.vue'
 import { URL } from '../../config/index.js'
 import Footer from '../components/Footer.vue'
@@ -24,6 +25,7 @@ export default {
   },
   components: {
     Navbar,
+
     Hero,
     Footer
   }
@@ -33,6 +35,7 @@ export default {
 
 <template>
   <Navbar />
+  <Navbar1/>
   <Hero />
   <Footer />
 </template>

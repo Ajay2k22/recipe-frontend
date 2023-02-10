@@ -84,7 +84,7 @@ export default {
             </div>
 
         </div>
-        
+
     </div>
 
 </template>
@@ -171,7 +171,7 @@ img {
 
 .container {
     margin: auto;
-
+    width: 100%;
     height: auto;
     box-shadow: var(--box-shadow2);
 }
@@ -181,5 +181,25 @@ img {
     flex-direction: column;
     flex: 3;
     gap: 1rem;
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+    .card {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .desc {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .container {
+        width: 425px;
+    }
+    .name{
+        flex:1;
+    }
 }
 </style>

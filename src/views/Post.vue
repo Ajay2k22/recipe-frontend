@@ -145,7 +145,7 @@ export default {
             </div>
             <div class="inputBox">
                 <span>Image</span>
-                <input id="image" type="file" name="file" @change="onFileSelected">
+                <input class="file" id="image" type="file" name="file" @change="onFileSelected">
                 <i></i>
             </div>
             <button @click="this.onSubmit" type="button">Submit</button>
@@ -157,11 +157,13 @@ export default {
 <style scoped>
 .box {
     width: 100%;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form {
-    width: 30rem;
+    width: 35rem;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -188,6 +190,9 @@ export default {
 
 .inputBox input {
     background: rgb(219, 210, 210);
+    height:2.2rem;
+    padding: 0.5rem;
+    padding-left: 1rem;
     width: 100%;
 }
 
@@ -201,18 +206,59 @@ textarea {
     border-radius: 0.5rem;
 }
 
-::placeholder {
-    color: var(--pink)
-}
+
 
 button {
-    background: black;
-    color: white;
-    align-self: center;
+    margin: 1rem 0;
+    height: 2rem;
+    border-top-left-radius: 1rem;
+    border-radius: 3rem;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background: var(--black);
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--white);
+    cursor: pointer;
+    z-index: 1;
 }
 
-button:hover {
-    background: var(--pink);
-    color: rgb(0, 0, 0);
+
+label {
+    margin: 2px 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+
+}
+
+input {
+    height: 2rem;
+    margin-bottom: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    outline: none;
+    border-bottom-left-radius: 1.2rem;
+    border: 0px solid var(--black);
+}
+
+
+input:focus {
+    background: white;
+}
+
+.file {
+    padding: 0.3rem;
+}
+
+@media (min-width: 320px) and (max-width:425px) {
+    .box {
+        
+        width: 425px;
+    }
+
+    .form {
+        
+        width: 80%;
+    }
 }
 </style>

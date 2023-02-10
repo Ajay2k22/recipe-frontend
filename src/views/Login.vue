@@ -115,7 +115,6 @@ export default {
         </span>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -127,6 +126,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 
 
 .login-container {
@@ -208,4 +208,46 @@ button {
   transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+@media (max-width:1024px) {
+  .login-container {
+    width: 45%;
+  }
+
+}
+
+@media (max-width:768px) {
+  .login-container {
+    width: 55%;
+    background: green;
+  }
+
+}
+
+@media (min-width: 320px) and (max-width:425px) {
+  .login {
+    padding: 0 10px;
+    height:auto;
+    width: 425px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-container {
+    margin-top: 6rem;
+    height: 28rem;
+    padding: 1rem;
+    width: 325px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 2.5rem 4rem;
+    border-bottom-left-radius: 10rem;
+    background: var(--pink);
+    flex-wrap: wrap;
+
+  }
+
+}
 </style>

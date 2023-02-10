@@ -80,72 +80,167 @@ export default {
         </div>
     </div>
 
-    
+
 </template>
-<style >
-.container {
-    padding: 2rem;
-    height: 100%;
-    width: 100%;
-
-    display: flex;
-    position: relative;
-    gap: 1rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+<style scoped >
+input {
+    height: 2rem;
+    margin-bottom: 0.25rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    outline: none;
+    padding: 8px 1rem;
+    border-bottom-left-radius: 1.2rem;
+    border: 0px solid var(--black);
+    width: 20rem;
 }
 
-.container1 {
-    height: 13rem;
-    width:100%;
-    justify-content: center;
-    align-items: center;
-}
-
-h2 {
-    position: absolute;
-    top: 5rem;
-}
-
-.card {
-    width: 100%;
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-::placeholder {
-    color: var(--pink);
-    opacity: 0.5;
+.span1 {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 0.2rem;
 }
 
 .search {
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    top: 1.5rem;
-    align-items: center;
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 1rem 0;
+    gap: 1rem;
 }
 
-.search-logo {
-    width: 1.5rem;
-    position: absolute;
-    right: 2rem;
-    top: 0.4rem;
-    cursor: pointer;
+input:focus {
+    background: white;
 }
 
 button {
-    background: var(--pink);
-    color: #fff;
-    font-size: 1rem;
-    border: 0px solid;
-    border-radius: 1rem;
-    width: 10rem;
-    cursor: pointer;
-    box-shadow: var(--box-shadow2);
+    margin: 1rem 0;
     height: 2rem;
+    border-top-left-radius: 1rem;
+    border-radius: 3rem;
+    z-index: -1;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background: var(--black);
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--white);
+    cursor: pointer;
+    width: 10rem;
+    
+}
+.search button:hover{
+    border:1px solid black;
+    background: white;
+    color:black;
+    border-radius: 1rem;
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+    .container {
+        width: 425px;
+        padding: 1rem 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        gap: 0.1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        width: 20rem;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.01rem;
+    }
+}
+
+@media (min-width: 425px) {
+
+    .search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 425px;
+        padding: 1rem 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .card {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 768px;
+        padding: 1rem 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+
+    .wrap {
+        width: 16rem;
+        
+    }
+
+    .card {
+        margin: 1px;
+        
+        display: grid;
+        gap:0.1px;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        width: 1440px;
+
+    }
+
+    .card {
+        margin: auto;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+
+    }
 }
 </style>

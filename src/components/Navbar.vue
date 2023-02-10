@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import {URL} from '../../config/index.js'
+import { URL } from '../../config/index.js'
 export default {
     name: 'Logout',
 
@@ -74,108 +74,149 @@ export default {
 </script>
 
 <template>
-    <div class="navbar">
+    <nav>
         <div class="logo">
-            <img class="logo" src="../assets/logo1.png" alt="">
+            MyRecipe
         </div>
-        <div class="content1">
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><router-link class="span active" :to="{ name: 'home' }"><span>Home</span></router-link></li>
+            <li><router-link class="span" :to="{ name: 'search' }"><span>Feed</span></router-link></li>
+            <li> <router-link class="span" :to="{ name: 'post' }"><span>New Post</span></router-link></li>
+            <li><router-link class="span" :to="{ name: 'mypost' }"><span>Shorts</span></router-link></li>
+            <li> <router-link class="span" :to="{ name: 'signup' }"><span
+                        @click="this.Logout">Logout</span></router-link></li>
+        </ul>
 
-            <router-link class="span" :to="{ name: 'home' }"><span>Home</span></router-link>
-            <router-link class="span" :to="{ name: 'search' }"><span>Feed</span></router-link>
 
-            <router-link class="span" :to="{ name: 'post' }"><span>New Post</span></router-link>
-            <router-link class="span" :to="{ name: 'mypost' }"><span>Shorts</span></router-link>
-            <router-link class="span" :to="{ name: 'signup' }"><span @click="this.Logout">Logout</span></router-link>
-        </div>
 
-    </div>
+    </nav>
+
 </template>
 <style  >
-.navbar {
-    padding: 1.5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    background: rgb(14, 7, 7);
-    height: 8rem;
-}
-
-::placeholder {
-    color: var(--pink);
-    opacity: 0.5;
-}
-
-.search-logo {
-    width: 1.5rem;
-    position: absolute;
-    right: 2rem;
-    top: 0.4rem;
-    cursor: pointer;
-}
-
-.logo {
-    margin-left: 1.5rem;
-    width: 7rem;
-    height: 7rem;
-
-}
-
-.search {
-    display: flex;
-    position: relative;
-    gap: 1.5rem;
-
-    justify-content: flex-end;
-    align-items: center;
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.span {
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-decoration: none;
+nav .menu-btn i {
     color: white;
-    cursor: pointer;
-    background: var(--pink);
-    width: 8rem;
-    text-align: center;
-    transition: 0.5s cubic-bezier(0.86, 0, 0.07, 1);
-    border-radius: 2rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 5px 0px;
+    display: none;
+}
+
+nav {
+    height: 80px;
+    background: var(--black);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px 0px 100px;
+    align-items: center;
+}
+
+#click:checked~ul {
+    top: 75px;
+    height: 100%;
+}
+
+#click {
+    display: none;
+}
+
+nav .logo {
+    font-size: 33px;
+    color: #fff;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+
+
+nav ul li {
+    margin: 0 5px;
 }
 
 .span:hover {
-    background: white;
-    border-radius: 2rem;
+    background: #fff;
     color: var(--pink);
+}
+
+.span {
+    color: #fff;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 8px 10px;
 
 }
 
-input {
-    height: 2.2rem;
-    width: 20rem;
-    box-shadow: var(--box-shadow1);
-    margin-bottom: 0.25rem;
-    padding: 8px 1rem;
-    border-bottom-left-radius: 1.2rem;
-    border: 1px solid white;
+@media (max-width: 940px) {
+   
+    nav ul {
+        position: absolute;
+        top: -150px;
+        height: 0%;
+        z-index: 1;
+        align-items: center;
+        gap: 1.5rem;
+        background: var(--black);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        left: 0;
+        transition: all 0.3s ease;
+    }
+
+    .span:hover {
+        background: #fff;
+        color: var(--pink);
+    }
+
+    nav .menu-btn i {
+        display: block;
+
+    }
 }
 
-input:focus {
-    color: var(--pink);
-    outline: none;
-}
+@media (min-width: 320px) and (max-width: 425px) {
+    nav {
+        height: 80px;
+        background: var(--black);
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 50px 0px 100px;
+        align-items: center;
+        width:425px;
+    }
+    nav ul {
+        position: absolute;
+        top: -150px;
+        height: 0%;
+        z-index: 1;
+        align-items: center;
+        gap: 1.5rem;
+        background: var(--black);
+        width: 425px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        left: 0;
+        transition: all 0.3s ease;
+    }
 
-.content1 {
-    display: flex;
-    gap: 1.2rem;
-    width: 100%;
-    justify-content: flex-end;
-    margin: auto;
-}
+    .span:hover {
+        background: #fff;
+        color: var(--pink);
+    }
 
-.content routerlink {
-    align-self: flex-end;
+    nav .menu-btn i {
+        display: block;
+
+    }
 }
 </style>
