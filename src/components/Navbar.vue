@@ -104,7 +104,7 @@ nav .menu-btn i {
 
 nav {
     height: 80px;
-    background: var(--black);
+    background: rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: space-between;
     padding: 0px 50px 0px 100px;
@@ -155,7 +155,7 @@ nav ul li {
 }
 
 @media (max-width: 940px) {
-   
+
     nav ul {
         position: absolute;
         top: -150px;
@@ -163,7 +163,7 @@ nav ul li {
         z-index: 1;
         align-items: center;
         gap: 1.5rem;
-        background: var(--black);
+        background: rgba(255, 255, 255, 0.5);
         width: 100%;
         display: flex;
         justify-content: center;
@@ -191,13 +191,14 @@ nav ul li {
         justify-content: space-between;
         padding: 0px 50px 0px 100px;
         align-items: center;
-        width:425px;
+        width: 425px;
     }
+
     nav ul {
         position: absolute;
         top: -150px;
         height: 0%;
-        z-index: 1;
+        z-index: 2;
         align-items: center;
         gap: 1.5rem;
         background: var(--black);

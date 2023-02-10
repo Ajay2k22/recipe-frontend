@@ -32,9 +32,9 @@ export default {
     methods: {
         async onSearch() {
             try {
-                console.log('hi')
-                let res = await axios.get(`${URL}/api/ingredient/${this.search}`)
-
+              
+                const res = await axios.get(`${URL}/api/ingredient/${this.search}`)
+                
                 if (res.data.data.length === 0) {
                     this.items = 0
                 }
@@ -46,6 +46,21 @@ export default {
                 console.log('error is here')
                 console.log(e)
             }
+            // try {
+            //     console.log('hi')
+            //     let res = await axios.get(`${URL}/api/ingredient/${this.search}`)
+
+            //     if (res.data.data.length === 0) {
+            //         this.items = 0
+            //     }
+            //     else {
+            //         this.items = res.data.data
+            //     }
+            //     console.log(res.data.data.length)
+            // } catch (e) {
+            //     console.log('error is here')
+            //     console.log(e)
+            // }
         },
         async newPage() {
             this.$router.push({ name: 'cardpage' })
@@ -70,7 +85,8 @@ export default {
     <div class="container">
         <div class="search">
             <input v-model="this.search" type="text" placeholder="Search ... ">
-            <button type="button" @click="onSearch">search</button>
+            <button class="btn" type="button" @click="this.onSearch">search</button>
+           
         </div>
         <div v-if="this.items.length != 0" class="card">
             <Cards class="wrap" @click="this.newPage" :item="item" v-for="item in this.items" :key="item" />
@@ -110,28 +126,24 @@ input:focus {
     background: white;
 }
 
-button {
+.btn {
     margin: 1rem 0;
     height: 2rem;
     border-top-left-radius: 1rem;
     border-radius: 3rem;
-    z-index: -1;
+    z-index: 1;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     background: var(--black);
     border: none;
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--white);
-    cursor: pointer;
-    width: 10rem;
     
+    width: 10rem;
+
 }
-.search button:hover{
-    border:1px solid black;
-    background: white;
-    color:black;
-    border-radius: 1rem;
-}
+
+
 
 @media (min-width: 320px) and (max-width: 425px) {
     .container {
@@ -215,14 +227,14 @@ button {
 
     .wrap {
         width: 16rem;
-        
+
     }
 
     .card {
         margin: 1px;
-        
+
         display: grid;
-        gap:0.1px;
+        gap: 0.1px;
         grid-template-columns: repeat(4, 1fr);
         width: 100%;
     }
