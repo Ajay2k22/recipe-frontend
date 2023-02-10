@@ -80,7 +80,12 @@ export default {
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
-            <i class="fas fa-bars"></i>
+            <!-- <i class="fas fa-bars"></i> -->
+            <div class="line">
+                <span class="l1"></span>
+                <span class="l1"></span>
+                <span class="l1"></span>
+            </div>
         </label>
         <ul>
             <li><router-link class="span active" :to="{ name: 'home' }"><span>Home</span></router-link></li>
@@ -96,7 +101,21 @@ export default {
     </nav>
 
 </template>
-<style  >
+<style  scoped>
+.line {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+    height: 1rem;
+}
+
+.l1 {
+    border: 1px solid white;
+    width: 1.2rem;
+}
+
 nav .menu-btn i {
     color: white;
     display: none;
@@ -104,7 +123,7 @@ nav .menu-btn i {
 
 nav {
     height: 80px;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--black);
     display: flex;
     justify-content: space-between;
     padding: 0px 50px 0px 100px;
@@ -139,7 +158,7 @@ nav ul li {
 
 .span:hover {
     background: #fff;
-    color: var(--pink);
+    color: #e91e63;
 }
 
 .span {
@@ -160,10 +179,10 @@ nav ul li {
         position: absolute;
         top: -150px;
         height: 0%;
-        z-index: 1;
+        z-index: 2;
         align-items: center;
         gap: 1.5rem;
-        background: rgba(255, 255, 255, 0.5);
+        background: var(--black);
         width: 100%;
         display: flex;
         justify-content: center;
@@ -174,12 +193,16 @@ nav ul li {
 
     .span:hover {
         background: #fff;
-        color: var(--pink);
+        color: #e91e63;
     }
 
     nav .menu-btn i {
         display: block;
 
+    }
+
+    .line {
+        display: flex;
     }
 }
 
@@ -212,7 +235,7 @@ nav ul li {
 
     .span:hover {
         background: #fff;
-        color: var(--pink);
+        color: #e91e63;
     }
 
     nav .menu-btn i {

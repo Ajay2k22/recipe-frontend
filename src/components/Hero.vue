@@ -39,7 +39,8 @@ export default {
                     dinners,
                     healthy breakfast and lunch ideas, and more.
                 </p>
-                <button @click="pushme">Explore</button>
+
+               <button @click="pushme">Explore</button>
             </div>
         </div>
 
@@ -108,6 +109,7 @@ export default {
     padding: 0.8rem;
     border-radius: 10px;
     text-align: center;
+    width: 10rem;
 }
 
 .img {
@@ -139,11 +141,6 @@ h1 {
     height: 70vh;
 }
 
-button:hover {
-    background: white;
-    color: black;
-    font-weight: bold;
-}
 
 button {
     margin: 1rem 2rem;
@@ -151,7 +148,7 @@ button {
     width: 20%;
     border-top-left-radius: 1rem;
     border-radius: 3rem;
-    z-index: -1;
+    z-index: 5;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     background: var(--black);
     border: none;
@@ -160,6 +157,12 @@ button {
     color: var(--white);
     cursor: pointer;
     transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.content button:hover {
+    background: white;
+    color: black;
+    font-weight: bold;
 }
 
 p {
@@ -206,14 +209,14 @@ p {
 
 @media (min-width: 320px) and (max-width: 425px) {
     .trending {
-        width:425px;
+        width: 425px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 4rem 0;
-      
-        
+
+
     }
 
     .text span:hover {

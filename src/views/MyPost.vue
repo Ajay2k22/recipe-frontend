@@ -97,7 +97,7 @@ export default {
 
 .author {
     align-self: flex-end;
-    background: var(--pink);
+    background: #e91e63;
     color: white;
     border-radius: 0.5rem;
     width: auto;
@@ -125,14 +125,14 @@ export default {
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     padding: 0.2rem;
-    background: var(--pink);
+    background: #e91e63;
     color: white;
     box-shadow: var(--box-shadow2);
 }
 
 .tag:hover {
 
-    background: var(--pink);
+    background: #e91e63;
     color: white;
 
 }
