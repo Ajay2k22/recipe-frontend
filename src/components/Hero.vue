@@ -7,17 +7,17 @@ export default {
         }
     },
     methods: {
-        explore(){
-            this.$router.push({'path':'/mypost'})
+        explore() {
+            this.$router.push({ 'path': '/mypost' })
         },
-        pizza(){
-            this.$router.push({'path':'/search/63d6bcc63f842c7ec561c70a'})
+        pizza() {
+            this.$router.push({ 'path': '/search/63d6bcc63f842c7ec561c70a' })
         },
-        fries(){
-            this.$router.push({'path':'/search/63d6bcc63f842c7ec561c72e'})
+        fries() {
+            this.$router.push({ 'path': '/search/63d6bcc63f842c7ec561c72e' })
         },
-        sandwiches(){
-            this.$router.push({'path':'/search/63d6bcc63f842c7ec561c716'})
+        sandwiches() {
+            this.$router.push({ 'path': '/search/63d6bcc63f842c7ec561c716' })
         },
         pushme() {
             this.$router.push({ name: 'mypost' })
@@ -51,9 +51,10 @@ export default {
                     dinners,
                     healthy breakfast and lunch ideas, and more.
                 </p>
+               
 
-                
             </div>
+
         </div>
 
     </div>
@@ -61,8 +62,8 @@ export default {
         <h2>Category</h2>
         <div class="text">
             <span @click="this.pizza">Pizza</span>
-            <span  @click="this.fries">Fries</span>
-            <span  @click="this.sandwiches">Sandwiches</span>
+            <span @click="this.fries">Fries</span>
+            <span @click="this.sandwiches">Sandwiches</span>
         </div>
     </div>
     <div class="popular-recipe">
@@ -103,7 +104,7 @@ export default {
     align-items: center;
 }
 
-.span{
+.span {
     background: black;
     color: white;
     padding: 0.2rem;
@@ -212,6 +213,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin:1rem;
 }
 
 .hero-img {
@@ -291,7 +293,10 @@ p {
 
     .content {
         flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         width: 100%;
+        height:15rem;
     }
 
     p {

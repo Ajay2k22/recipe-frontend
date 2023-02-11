@@ -123,7 +123,7 @@ button {
 
     height: 2rem;
     border-top-left-radius: 1rem;
-    width:50%;
+    width:10rem;
     border-radius: 3rem;
     z-index: 1;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
