@@ -7,6 +7,18 @@ export default {
         }
     },
     methods: {
+        explore(){
+            this.$router.push({'path':'/mypost'})
+        },
+        pizza(){
+            this.$router.push({'path':'/search/63d6bcc63f842c7ec561c70a'})
+        },
+        fries(){
+            this.$router.push({'path':'/search/63d6bcc63f842c7ec561c72e'})
+        },
+        sandwiches(){
+            this.$router.push({'path':'/search/63d6bcc63f842c7ec561c716'})
+        },
         pushme() {
             this.$router.push({ name: 'mypost' })
         },
@@ -40,7 +52,7 @@ export default {
                     healthy breakfast and lunch ideas, and more.
                 </p>
 
-               <button @click="pushme">Explore</button>
+                
             </div>
         </div>
 
@@ -48,22 +60,21 @@ export default {
     <div class="trending">
         <h2>Category</h2>
         <div class="text">
-            <span>Pizza</span>
-            <span>Burger</span>
-            <span>Fries</span>
-            <span>Sandwiches</span>
+            <span @click="this.pizza">Pizza</span>
+            <span  @click="this.fries">Fries</span>
+            <span  @click="this.sandwiches">Sandwiches</span>
         </div>
     </div>
     <div class="popular-recipe">
         <h2>Popular Recipe</h2>
         <div class="img1">
-            <div class="img">
+            <div @click="this.explore" class="img">
                 <img src="../assets/Milkshake.jpg" alt="">
             </div>
-            <div class="img">
+            <div @click="this.explore" class="img">
                 <img src="../assets/warmapple.jpg" alt="">
             </div>
-            <div class="img">
+            <div @click="this.explore" class="img">
                 <img src="../assets/sandwitches.jpg" alt="">
             </div>
         </div>
@@ -90,6 +101,17 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.span{
+    background: black;
+    color: white;
+    padding: 0.2rem;
+    border-radius: 10px;
+    margin-left: 1rem;
+    text-align: center;
+    width: 10rem;
+    z-index: 2;
 }
 
 .img1 {

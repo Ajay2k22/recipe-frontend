@@ -156,10 +156,6 @@ nav ul li {
     margin: 0 5px;
 }
 
-.span:hover {
-    background: #fff;
-    color: #e91e63;
-}
 
 .span {
     color: #fff;
@@ -173,6 +169,12 @@ nav ul li {
 
 }
 
+.span:hover {
+    background: #fff;
+    color: #e91e63;
+}
+
+
 @media (max-width: 940px) {
 
     nav ul {
@@ -182,7 +184,7 @@ nav ul li {
         z-index: 2;
         align-items: center;
         gap: 1.5rem;
-        background: var(--black);
+        background:rgba(0, 0, 0, 0.5);
         width: 100%;
         display: flex;
         justify-content: center;
@@ -224,7 +226,7 @@ nav ul li {
         z-index: 2;
         align-items: center;
         gap: 1.5rem;
-        background: var(--black);
+        background:rgba(0, 0, 0, 0.5);
         width: 425px;
         display: flex;
         justify-content: center;
@@ -241,6 +243,10 @@ nav ul li {
     nav .menu-btn i {
         display: block;
 
+    }
+
+    .line {
+        display: flex;
     }
 }
 </style>
