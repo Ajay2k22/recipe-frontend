@@ -1,19 +1,11 @@
 <script >
-import { RouterLink, RouterView } from 'vue-router';
-import Footer from './components/Footer.vue';
+import { RouterView } from 'vue-router';
 export default {
   name: 'App',
-  components: {
-    Footer
-  }
 }
 </script>
 
 <template>
   <RouterView />
-
 </template>
 
-<style scoped>
-
-</style>

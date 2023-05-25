@@ -22,12 +22,10 @@ export default {
         this.fetchfeed()
     },
     methods: {
+        // it fetch the ingredients with particular id
         async fetchfeed() {
             const res = await axios.get(`${URL}/api/ingredients/${this.id}`)
             this.item = res.data.data[0]
-            console.log(res.data.data[0].name)
-            // console.log(this.item.instructions[0].text)
-            // console.log(this.item.ingredients[0].unit)
         }
     }
 }
@@ -86,29 +84,24 @@ export default {
     justify-content: flex-start;
     align-items: flex-start;
 }
-
 .container {
     padding: 1.8rem;
     gap: 0.2rem;
 }
-
 .heading {
     font-size: 1.2rem;
     font-weight: bold;
     justify-self: flex-start;
     align-self: flex-start;
 }
-
 .content {
     line-height: 2rem;
 }
-
 .text {
     margin: 1 0;
     justify-self: flex-start;
     align-self: flex-start;
 }
-
 .instructions {
     padding: 1rem;
     width: 100%;
@@ -116,21 +109,18 @@ export default {
     margin-top: 0.5rem;
     border-radius: 2rem;
 }
-
 .heading-title {
     font-size: 2rem;
     font-weight: bold;
     width: auto;
     margin-bottom: 1rem;
 }
-
 .heading-title1 {
     font-size: 2rem;
     font-weight: bold;
     width: auto;
     margin-bottom: 1.8rem;
 }
-
 .ingredients2 {
     margin-top: auto;
     box-shadow: var(--box-shadow2);
@@ -138,35 +128,27 @@ export default {
     width: 80%;
     border-radius: 2rem;
 }
-
 .img img {
     width: 80%;
     box-shadow: var(--box-shadow2);
     border-radius: 2rem;
 }
-
 .body1 {
     margin-top: 2rem;
     width: 100%;
     padding: 1rem;
     height: auto;
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
 }
-
 .title {
     width: 100%;
     font-size: 2rem;
     font-weight: bold;
-
 }
-
 .text {
     margin-top: 1.2rem;
 }
-
-
 @media (max-width: 768px) {
     .container {
         margin: 0.1rem;
@@ -178,30 +160,21 @@ export default {
         flex-direction: column;
         align-items: center;
     }
-
     .body1 {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
-
     .ingredients2 {
-
         width: 100%;
-
     }
-
     .img img {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
     }
-
-
-
 }
-
 @media (min-width: 320px) and (max-width: 425px) {
     .container {
         width: 425px;

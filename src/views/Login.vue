@@ -1,18 +1,11 @@
-
 <script>
 import axios from 'axios';
 import { URL } from '../../config/index.js'
 export default {
   name: 'Login',
   mounted() {
-    // let token = JSON.parse(localStorage.getItem('token'))
-    // if (token!=1) {
-    //   this.$router.push({ name: 'home' })
-    // }
-    // console.log(token)
     localStorage.clear()
   },
-
   data() {
     return {
       email: '',
@@ -24,19 +17,15 @@ export default {
       try {
         let token = JSON.parse(localStorage.getItem('token'))
         let refresh_token = token.refresh_token
-
-        console.log(refresh_token)
         let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
-
         window.localStorage.setItem("token", JSON.stringify(res.data))
-        console.log(res)
-
       }
       catch (e) {
-        console.log('refresh token error')
+        // Refresh token error error
         console.log(e)
       }
     },
+    // This function has been used to fetch username
     async me() {
       this.token()
       try {
@@ -50,7 +39,6 @@ export default {
         })
         console.log(res)
         localStorage.setItem('detail', JSON.stringify({ name: res.data.name }))
-
       } catch (e) {
         console.log(e)
       }
@@ -58,43 +46,31 @@ export default {
     async Login() {
       let res
       try {
+        // it checks all fields are filled or not
         if (this.email != '' && this.password != '') {
           res = await axios.post(`${URL}/api/login`, {
             email: this.email,
             password: this.password
-            //email: "Ajay@gmail.com",
-            //password: "12345678"
           })
-          console.log(res)
-
           let document = {
             access_token: res.data.access_token,
             refresh_token: res.data.refresh_token
           }
           window.localStorage.setItem("token", JSON.stringify(document))
-          console.log('below')
-          console.log(res)
-          // console.log(this.token_store.token.$reset())
-          // this.token_store.addToken(
-          //   {
-          //     access_token: " ",
-          //     refresh_token: " "
-          //   });
+
           if (res.status === 200) {
             this.me()
             this.$router.push({ name: 'home' })
           }
         }
         else {
+          // it shows a warning to user that all fields are required 
           alert('All fileds are required')
         }
-
       }
       catch (e) {
-
+        // Unable to login error
         console.log(e)
-        alert(e.response.data.message)
-
       }
     }
   }
@@ -126,9 +102,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
-
-
 .login-container {
   margin-top: 6rem;
   height: 25%;
@@ -140,21 +113,16 @@ export default {
   border-bottom-left-radius: 10rem;
   background: var(--pink);
   flex-wrap: wrap;
-
 }
-
 ::placeholder {
   color: var(--black);
   opacity: 0.8;
 }
-
 label {
   margin: 2px 0;
   font-size: 1.2rem;
   font-weight: 500;
-
 }
-
 input {
   height: 2rem;
   margin-bottom: 0.25rem;
@@ -164,18 +132,15 @@ input {
   border-bottom-left-radius: 1.2rem;
   border: 0px solid var(--black);
 }
-
 .span1 {
   margin: 1rem 0;
   font-size: 2.5rem;
   font-weight: bold;
   margin-top: 0.2rem;
 }
-
 input:focus {
   background: white;
 }
-
 button {
   margin: 1rem 0;
   height: 2rem;
@@ -190,15 +155,9 @@ button {
   color: var(--white);
   cursor: pointer;
 }
-
-
-
 .login-bottom {
   align-self: flex-end;
-
 }
-
-
 .login-hyperlink {
   font-size: 1rem;
   text-decoration-line: none;
@@ -207,32 +166,26 @@ button {
   cursor: pointer;
   transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 @media (max-width:1024px) {
   .login-container {
     width: 45%;
   }
-
 }
-
 @media (max-width:768px) {
   .login-container {
     width: 55%;
     background: green;
   }
-
 }
-
 @media (min-width: 320px) and (max-width:425px) {
   .login {
     padding: 0 10px;
-    height:auto;
+    height: auto;
     width: 425px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
   .login-container {
     margin-top: 6rem;
     height: 28rem;
@@ -241,13 +194,10 @@ button {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     display: flex;
     flex-direction: column;
-    
     padding: 2.5rem 4rem;
     border-bottom-left-radius: 10rem;
     background: var(--pink);
     flex-wrap: wrap;
-
   }
-
 }
 </style>

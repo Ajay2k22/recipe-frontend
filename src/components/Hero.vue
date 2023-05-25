@@ -23,10 +23,8 @@ export default {
             this.$router.push({ name: 'mypost' })
         },
         onLoaded() {
-
             let detail = JSON.parse(localStorage.getItem('detail'));
             this.name = detail.name
-
         }
     },
     mounted() {
@@ -51,12 +49,8 @@ export default {
                     dinners,
                     healthy breakfast and lunch ideas, and more.
                 </p>
-               
-
             </div>
-
         </div>
-
     </div>
     <div class="trending">
         <h2>Category</h2>

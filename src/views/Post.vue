@@ -30,67 +30,48 @@ export default {
         }
     },
     methods: {
+        // this function has to used to check the token is expired or not
+        // if it get expired then ,new token will get received from the server
         async token() {
             try {
                 let token = JSON.parse(localStorage.getItem('token'))
                 let refresh_token = token.refresh_token
-
-                console.log(refresh_token)
                 let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
-
                 window.localStorage.setItem("token", JSON.stringify(res.data))
-                console.log(res)
-
             }
             catch (e) {
                 console.log('refresh token error')
                 console.log(e)
             }
         },
+        // it stores the data on formdata and post on the server
         async onSubmit(e) {
             let formdata = new FormData()
             let res;
             try {
                 this.token()
                 e.preventDefault();
-
                 let token = JSON.parse(localStorage.getItem('token'))
                 const headers = {
                     'Content-Type': 'multipart/form-data',
                     'authorization': `Bearer ${token.access_token}`
                 }
-
-                // console.log(this.name)
-                // console.log(this.tag)
-                // console.log(this.descriptions)
-                // console.log(this.timerequired)
-                // console.log(this.file)
-
                 formdata.append('name', this.name)
                 formdata.append('tag', this.tag)
                 formdata.append('descriptions', this.descriptions)
-                console.log(this.descriptions)
                 formdata.append('timeRequired', this.timerequired)
                 var reader = new FileReader()
                 reader.onload = async function (event) {
                     let dataUri = event.target.result
                     this.dataUri = dataUri
-                    console.log('hi bro')
-                    console.log('hello123', this.dataUri)
                     formdata.append('image', this.dataUri)
                     res = await axios.post(`${URL}/api/products`,
                         formdata,
                         {
                             headers: headers
                         });
-                    console.log("done")
-
-
-
                 };
                 reader.readAsDataURL(this.file.path)
-
-                console.log('down')
                 for (const value of formdata.values()) {
                     console.log(value);
                 }
@@ -100,20 +81,15 @@ export default {
                     this.$router.push({ name: 'mypost' })
                 }
 
-                console.log('meri', this.dataUri)
-
-
             } catch (e) {
-                console.log('response error')
+                // Unable to post and submit error
                 console.log(e)
-
             }
         },
 
         onFileSelected(e) {
             this.file.path = e.target.files[0]
             console.log(e.target.files[0])
-
         }
     }
 }
@@ -161,53 +137,43 @@ export default {
     justify-content: center;
     align-items: center;
 }
-
 .form {
     width: 35rem;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     margin: 4rem auto;
     gap: 0.6rem;
     padding: 1rem;
     border-radius: 2rem;
     box-shadow: var(--box-shadow2);
 }
-
 .inputBox {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
 }
-
 .h2 {
     font-size: 1.5rem;
     font-weight: bold;
     margin: 1rem 0;
 }
-
 .inputBox input {
     background: rgb(219, 210, 210);
-    height:2.2rem;
+    height: 2.2rem;
     padding: 0.5rem;
     padding-left: 1rem;
     width: 100%;
 }
-
 textarea {
     background: rgb(219, 210, 210);
     width: 100%;
     border: none;
     height: 10rem;
-
     padding: 1rem;
     border-radius: 0.5rem;
 }
-
-
-
 button {
     margin: 1rem 0;
     height: 2rem;
@@ -223,15 +189,11 @@ button {
     cursor: pointer;
     z-index: 1;
 }
-
-
 label {
     margin: 2px 0;
     font-size: 1.2rem;
     font-weight: 500;
-
 }
-
 input {
     height: 2rem;
     margin-bottom: 0.25rem;
@@ -240,24 +202,17 @@ input {
     border-bottom-left-radius: 1.2rem;
     border: 0px solid var(--black);
 }
-
-
 input:focus {
     background: white;
 }
-
 .file {
     padding: 0.3rem;
 }
-
 @media (min-width: 320px) and (max-width:425px) {
     .box {
-        
         width: 425px;
     }
-
     .form {
-        
         width: 80%;
     }
 }

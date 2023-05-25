@@ -1,4 +1,3 @@
-
 <script>
 import axios from 'axios';
 import { URL } from '../../config/index.js'
@@ -6,17 +5,6 @@ export default {
     name: 'Signup',
     mounted() {
         localStorage.clear()
-        // if (this.token_store.token.access_token) {
-        //     this.$router.push({ name: 'home' })
-        // }
-        // let token = localStorage.getItem('token');
-        // if (token) {
-        //     this.$router.push({ name: 'Home' })
-        // }
-        // let token = JSON.parse(localStorage.getItem('token'))
-        // if (token!=1) {
-        //     this.$router.push({ name: 'home' })
-        // }
     },
 
     data() {
@@ -30,17 +18,14 @@ export default {
         }
     },
     methods: {
+        // this function has to used to check the token is expired or not
+        // if it get expired then ,new token will get received from the server
         async token() {
             try {
                 let token = JSON.parse(localStorage.getItem('token'))
                 let refresh_token = token.refresh_token
-
-                console.log(refresh_token)
                 let res = await axios.post(`${URL}/api/refresh`, { refresh_token: refresh_token })
-
                 window.localStorage.setItem("token", JSON.stringify(res.data))
-                console.log(res)
-
             }
             catch (e) {
                 console.log('refresh token error')
@@ -66,24 +51,17 @@ export default {
             }
         },
         async Signup() {
-            let res
-
+            let res = ''
             try {
+                // check whether all field is filled or not
                 if (this.name != '' && this.email != '' && this.password != '' && this.confirm_password != '') {
-                    console.log(this.name)
                     res = await axios.post(`${URL}/api/register`, {
                         name: this.name,
                         email: this.email,
                         password: this.password,
                         repeat_password: this.confirm_password
                     })
-                    console.log(res)
                     if (res.status === 200) {
-                        // this.token_store.addToken({
-                        //     access_token: res.data.access_token,
-                        //     refresh_token: res.data.refresh_token
-                        // })
-                        // console.log(this.token_store.token.access_token)
                         let token = {
                             access_token: res.data.access_token,
                             refresh_token: res.data.refresh_token
@@ -91,22 +69,20 @@ export default {
                         window.localStorage.setItem("token", JSON.stringify(token))
                         this.me()
                         this.$router.push({ name: 'home' })
-
                     }
-                    if (res.status === 409) {
-                        alert('email is already taken')
+                    // it checks email is already taken or not
+                    if (res.status === 401) {
+                        alert('Email is already taken')
                     }
-                } else {
+                }
+                else {
                     alert('All fileds are required')
                 }
 
             } catch (e) {
-                console.log('unable to register')
-                alert(e.response.data.message)
+                // Unable to register error
                 console.log(e)
             }
-
-
         }
     }
 }
@@ -141,14 +117,12 @@ export default {
     justify-content: center;
     align-items: center;
 }
-
 .span1 {
     margin: 1rem 0;
     font-size: 2.5rem;
     font-weight: bold;
     margin-top: 0.2rem;
 }
-
 .login-container {
     margin-top: 6rem;
     height: 25%;
@@ -161,19 +135,15 @@ export default {
     background: var(--pink);
     flex-wrap: wrap;
 }
-
 ::placeholder {
     color: var(--black);
     opacity: 0.8;
 }
-
 label {
     margin: 2px 0;
     font-size: 1.2rem;
     font-weight: 500;
-
 }
-
 input {
     height: 2rem;
     padding: 8px 1rem;
@@ -183,17 +153,14 @@ input {
     box-shadow: var(--box-shadow2);
     outline: none;
 }
-
 h2 {
     margin: 1rem 0;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
-
 input:focus {
     background: white;
 }
-
 button {
     margin: 1rem 0;
     height: 2rem;
@@ -207,15 +174,9 @@ button {
     color: var(--white);
     cursor: pointer;
 }
-
-
-
 .login-bottom {
     align-self: flex-end;
-
 }
-
-
 .login-hyperlink {
     font-size: 1rem;
     text-decoration-line: none;
@@ -227,15 +188,12 @@ button {
     .login-container {
         width: 45%;
     }
-
 }
-
 @media (max-width:768px) {
     .login-container {
         width: 55%;
         background: var(--pink);
     }
-
 }
 @media (min-width: 320px) and (max-width:425px) {
     .login {
@@ -246,7 +204,6 @@ button {
         justify-content: center;
         align-items: center;
     }
-
     .login-container {
         margin-top: 6rem;
         height: 40rem;
@@ -255,15 +212,10 @@ button {
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         display: flex;
         flex-direction: column;
-
         padding: 2.5rem 4rem;
         border-bottom-left-radius: 10rem;
         background: var(--pink);
         flex-wrap: wrap;
-
     }
-
 }
-
-
 </style>

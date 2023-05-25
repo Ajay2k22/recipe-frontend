@@ -9,11 +9,6 @@ export default {
     props: {
         item: Object
     },
-    methods: {
-        async pushCardPage(id) {
-            this.$router.push({ name: 'cardpage', params: { id: id } })
-        }
-    }
 }
 </script>
 
@@ -50,7 +45,6 @@ export default {
                 </div>
             </div>
             <div class="divider">
-
             </div>
             <div class="bottom">
                 <label id="bottom-txt">My Recipe @All Rights Reserved</label>
@@ -72,21 +66,16 @@ export default {
     justify-content: center;
     align-items: center;
 }
-
 span {
     font-size: 0.8rem;
     font-weight: 400;
     cursor: pointer;
-
     color: rgb(255, 255, 255);
 }
-
 label {
     font-weight: 500;
-
     color: rgb(255, 255, 255);
 }
-
 .line {
     display: none;
     width: 100px;
@@ -101,7 +90,6 @@ label {
 
 #bottom-txt {
     font-size: 1rem;
-
     color: rgb(255, 255, 255);
     margin-top: 2rem;
 }
@@ -113,7 +101,6 @@ label {
     align-items: center;
     width: 85%;
     padding: 1rem;
-
     gap: 0.5rem;
 }
 
@@ -121,7 +108,6 @@ label {
     border: 1px solid rgb(255, 255, 255);
     height: 0.2rem;
     width: 50%;
-
 }
 
 .header {
@@ -129,37 +115,28 @@ label {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
     width: 100%;
 }
 
 @media (max-width: 425px) {
     .line {
         display: block;
-
     }
 
     .header {
-
         flex-direction: column;
         padding: 1rem 0;
-        
         width: 100%;
         gap: 1.5rem;
     }
-
     .footer {
         width: 425px;
-
         height: auto;
-
     }
-
     .col {
         margin: 0.5rem 0;
         justify-content: center;
         align-items: center;
     }
-
 }
 </style>
